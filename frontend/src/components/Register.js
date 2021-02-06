@@ -5,7 +5,7 @@ export class Register extends Component{
     constructor(props){
         super(props);
 
-        this.state={snackbaropen:false,snackbarmsg:''};
+        this.state={snackbaropen:false,snackbarmsg:'',username:''};
        // this.state=this.initialState;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -30,12 +30,19 @@ export class Register extends Component{
         .then(res=>res.json())
         .then((result)=>{
             // alert(result);   
-            this.setState({snackbaropen:true,snackbarmsg:result})
+            this.setState({snackbaropen:true,snackbarmsg:result,username:event.target.username.value})
         },
         (error)=>{
             this.setState({snackbaropen:true,snackbarmsg:'fail'})
         }
         )
+       
+        this.state.username = event.target.username.value
+        console.log(this.state.username);
+    }
+
+    static getUser = () => {
+        return this.state.username;
     }
 
     render(){
