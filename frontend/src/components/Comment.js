@@ -7,6 +7,7 @@ import {Table} from 'react-bootstrap';
 
 export class Comment extends Component{
 
+
     constructor(props) {
         super(props);
         this.state = {
@@ -19,7 +20,7 @@ export class Comment extends Component{
       }
 
       refreshList(){
-        fetch('https://localhost:44315/api/Employee')
+        fetch('http://localhost:8080/api/v1/Comment')
         .then(response=> response.json())
         .then(data=>{ 
          this.setState({emps:data});
@@ -82,14 +83,16 @@ export class Comment extends Component{
         <Table className="mt-4 " striped bordered hover size="sm" >
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>name</th>
                         <th>Comment</th>
                     </tr>
                 </thead>
                 <tbody>
                     {emps.map(emp=>
-                     <tr Key={emp.name}>
-                     <td>{emp.comment}</td>
+                     <tr Key={emp.id}>
+                     <td>{emp.commentDescription}</td>
+                     <td>{emp.user}</td>
                     <td>               
                     </td>
                      </tr>
@@ -127,8 +130,8 @@ export class Comment extends Component{
                                 </thead>
                                 <tbody>
                                     {emps.map(emp=>
-                                     <tr Key={emp.name}>
-                                     <td>{emp.comment}</td>
+                                     <tr Key={emp.user}>
+                                     <td>{emp.commentdescription}</td>
                                     <td>               
                                     </td>
                                      </tr>

@@ -9,6 +9,7 @@ import {Comment} from './Comment'
 
 export class Abroad extends Component{
 
+
     componentDidMount(){
         const config={
             headers:{
